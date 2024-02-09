@@ -1,3 +1,4 @@
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 
 interface PerformOperation {
@@ -37,13 +38,13 @@ public class Prog8 {
             System.out.println("3. Check if number is palindrome or not");
             System.out.println("4. Exit the program");
             System.out.print("Enter choice of operation: ");
-            int ch = Integer.parseInt(br.readLine());
+            int ch = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
             if(ch==4){
                 System.out.println("Ending the program");
                 System.exit(0);
             }
             System.out.print("Enter number to be checked for the chosen option: ");
-            int num = Integer.parseInt(br.readLine());
+            int num = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
             if (ch == 1) {
                 if(checkEvenOdd.operation(num))
                     System.out.println("Given number is even");
