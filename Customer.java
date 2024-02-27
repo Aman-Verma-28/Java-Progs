@@ -125,7 +125,7 @@ class Account
 
     public void deposit(double amount, String currencyType) throws DemonetizationException
     {
-        if((currencyType.equals("OLD")&&amount>500) || amount > 5000)
+        if(("OLD".equals(currencyType)&&amount>500) || amount > 5000)
         {
             throw new DemonetizationException(amount);
         }
