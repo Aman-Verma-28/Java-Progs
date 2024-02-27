@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -5,7 +6,7 @@ class Market{
     LinkedList<String> list = new LinkedList<>();
     final int capacity = 5;
     String[] fruits={"Apple","Orange","Watermelon","Banana"};
-    Random random = new Random();
+    Random random = new SecureRandom();
 
     public void produce() throws InterruptedException{
         while(true){
