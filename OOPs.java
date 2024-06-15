@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -76,7 +77,7 @@ class Game{
         return attempt;
     }
     Game(){
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         n = rand.nextInt(101);
         System.out.println("Guess the number(1-100) you have 10 attempts");
     }
