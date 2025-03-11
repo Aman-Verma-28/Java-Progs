@@ -1,3 +1,4 @@
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 
 class DemonetizationException extends Exception
@@ -25,7 +26,7 @@ public class Customer
         System.out.println("1. Minimum balance of 500");
         System.out.println("2. Custom balance of your choice should be atleast 500");
         System.out.print("Enter choice: ");
-        ch = Integer.parseInt(br.readLine());
+        ch = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
 
         if(ch == 1)
         {
@@ -34,7 +35,7 @@ public class Customer
         else if(ch == 2)
         {
             System.out.print("Enter starting balance: ");
-            double bal = Double.parseDouble(br.readLine());
+            double bal = Double.parseDouble(BoundedLineReader.readLine(br, 5_000_000));
             if(bal >= 500)
             {
                 newac = new Account(bal);
@@ -59,7 +60,7 @@ public class Customer
             System.out.println("3. Make a withdrawal");
             System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
-            ch = Integer.parseInt(br.readLine());
+            ch = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
 
             if(ch == 1)
             {
@@ -69,9 +70,9 @@ public class Customer
             else if(ch == 2)
             {
                 System.out.print("Enter amount to deposit: ");
-                double toDep = Double.parseDouble(br.readLine());
+                double toDep = Double.parseDouble(BoundedLineReader.readLine(br, 5_000_000));
                 System.out.print("Enter type of currency - OLD/NEW: ");
-                String curType = br.readLine();
+                String curType = BoundedLineReader.readLine(br, 5_000_000);
                 try
                 {
                     newac.deposit(toDep, curType);
@@ -85,7 +86,7 @@ public class Customer
             else if(ch == 3)
             {
                 System.out.print("Enter amount to withdraw: ");
-                double toWith = Double.parseDouble(br.readLine());
+                double toWith = Double.parseDouble(BoundedLineReader.readLine(br, 5_000_000));
                 newac.withdraw(toWith);
                 System.out.println("\n");
             }
